@@ -1,0 +1,8 @@
+obj/
+*.layout
+*.depend
+bin/*/LinkedList*
+bin/*/core
+CppCheckResults.xml
+bin/Debug/valgrind-output.txt
+.c9/
