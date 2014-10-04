@@ -24,7 +24,7 @@ void LinkedList::addItem(std::string item)
 
 void LinkedList::addItem(std::string item, unsigned int previousIndex)
 {
-    shared_ptr<ListItem> iter{first};
+    shared_ptr<ListItem> iter{first}, iter2{};
     for(unsigned int i = 0; i < previousIndex; i++)
     {
         if(iter->next == nullptr)
@@ -34,7 +34,9 @@ void LinkedList::addItem(std::string item, unsigned int previousIndex)
         }
         iter = iter->next;
     }
+    iter2 = iter->next;
     iter->next.reset(new ListItem{item});
+    iter->next->next = iter2;
 }
 
 std::string LinkedList::searchItem(unsigned int index)
@@ -54,7 +56,7 @@ std::string LinkedList::searchItem(unsigned int index)
 
 void LinkedList::removeItem(unsigned int index)
 {
-    shared_ptr<ListItem> iter{first}, iter2{nullptr};
+    shared_ptr<ListItem> iter{first}, iter2{};
     if(index == 0)
     {
         iter = iter->next;
