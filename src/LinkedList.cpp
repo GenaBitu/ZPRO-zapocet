@@ -80,6 +80,17 @@ void LinkedList::removeItem(unsigned int index)
     }
 }
 
+void LinkedList::exporter(std::string filename)
+{
+    ofstream file{filename, ofstream::trunc};
+    shared_ptr<ListItem> iter{first};
+    while(iter != nullptr)
+    {
+        file << iter->value << endl;
+        iter = iter->next;
+    }
+}
+
 LinkedList::~LinkedList()
 {
     shared_ptr<ListItem> iter{first};
@@ -88,4 +99,5 @@ LinkedList::~LinkedList()
         iter = iter->next;
         iter.reset();
     }
+    first.reset();
 }
