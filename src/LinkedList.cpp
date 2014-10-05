@@ -5,6 +5,20 @@ LinkedList::LinkedList() : first{}
 {
 }
 
+LinkedList::LinkedList(std::string filename) :first{}
+{
+    ifstream file{filename};
+    shared_ptr<ListItem> iter{first};
+    string readBuff;
+    file >> readBuff;
+    while(file.good())
+    {
+        addItem(readBuff);
+        file >> readBuff;
+    }
+}
+
+
 void LinkedList::addItem(std::string item)
 {
     if(first == nullptr)
