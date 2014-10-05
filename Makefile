@@ -20,9 +20,9 @@ OBJDIR_RELEASE = $(OBJDIR)/Release
 BINDIR_RELEASE = $(BINDIR)/Release
 OUT_RELEASE = $(BINDIR_RELEASE)/LinkedList
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)/Main.o
+OBJ_DEBUG = $(OBJDIR_DEBUG)/Main.o $(OBJDIR_DEBUG)/LinkedList.o $(OBJDIR_DEBUG)/ListItem.o
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/Main.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)/Main.o $(OBJDIR_RELEASE)/LinkedList.o $(OBJDIR_RELEASE)/ListItem.o
 
 all: debug release
 
@@ -42,6 +42,12 @@ out_debug: $(OBJ_DEBUG)
 $(OBJDIR_DEBUG)/Main.o: Main.cpp
 	$(CXX) $(CFLAGS_DEBUG) -c Main.cpp -o $(OBJDIR_DEBUG)/Main.o
 
+$(OBJDIR_DEBUG)/LinkedList.o: $(SRCDIR_DEBUG)/LinkedList.cpp
+	$(CXX) $(CFLAGS_DEBUG) -c $(SRCDIR_DEBUG)/LinkedList.cpp -o $(OBJDIR_DEBUG)/LinkedList.o
+
+$(OBJDIR_DEBUG)/ListItem.o: $(SRCDIR_DEBUG)/ListItem.cpp
+	$(CXX) $(CFLAGS_DEBUG) -c $(SRCDIR_DEBUG)/ListItem.cpp -o $(OBJDIR_DEBUG)/ListItem.o
+
 clean_debug:
 	rm -f $(OBJ_DEBUG) $(OUT_DEBUG)
 	rm -rf $(OBJDIR_DEBUG)
@@ -59,6 +65,12 @@ out_release: before_release $(OBJ_RELEASE)
 
 $(OBJDIR_RELEASE)/Main.o: Main.cpp
 	$(CXX) $(CFLAGS_RELEASE) -c Main.cpp -o $(OBJDIR_RELEASE)/Main.o
+
+$(OBJDIR_RELEASE)/LinkedList.o: $(SRCDIR_RELEASE)/LinkedList.cpp
+	$(CXX) $(CFLAGS_RELEASE) -c $(SRCDIR_RELEASE)/LinkedList.cpp -o $(OBJDIR_RELEASE)/LinkedList.o
+
+$(OBJDIR_RELEASE)/ListItem.o: $(SRCDIR_RELEASE)/ListItem.cpp
+	$(CXX) $(CFLAGS_RELEASE) -c $(SRCDIR_RELEASE)/ListItem.cpp -o $(OBJDIR_RELEASE)/ListItem.o
 
 clean_release:
 	rm -f $(OBJ_RELEASE) $(OUT_RELEASE)
