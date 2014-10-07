@@ -5,7 +5,7 @@
 
 class ListItem
 {
-public:
+private:
     friend LinkedList;
     ListItem() = delete;
     ListItem(std::string item);

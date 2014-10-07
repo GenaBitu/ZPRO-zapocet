@@ -13,6 +13,7 @@ class LinkedList
         void removeItem(unsigned int index);
         void exporter(std::string filename);
         ~LinkedList();
+    private:
         std::shared_ptr<ListItem> first;
 };
 
